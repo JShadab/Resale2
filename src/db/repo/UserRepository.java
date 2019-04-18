@@ -53,7 +53,7 @@ public class UserRepository {
 		return user;
 	}
 
-	public static User findUser(int id) {
+	public static User findUser(long id) {
 		return null;
 	}
 

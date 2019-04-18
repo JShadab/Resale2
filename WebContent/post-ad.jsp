@@ -1,7 +1,8 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Resale | Sign in</title>
+<title>Resale | Post Ads</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- bootstrap-CSS -->
 <link rel="stylesheet" href="css/bootstrap-select.css">
@@ -19,11 +20,42 @@
 <meta name="keywords"
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+
 <script type="application/x-javascript">
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -87,20 +119,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <!-- //language-select -->
-<script type="text/javascript">
-function onSignInLoad() {
-	
-	var x='${param.msg}';
-	
-	if(x){
-		
-		alert(x);
-	}
-	
-}
-</script>
 </head>
-<body onload="onSignInLoad()">
+<body>
 	<!-- Navigation -->
 	<div class="agiletopbar">
 		<div class="wthreenavigation">
@@ -130,70 +150,100 @@ function onSignInLoad() {
 		</div>
 		<div class="clearfix"></div>
 	</div>
+	<!-- //Navigation -->
 
 	<!-- header Start-->
 	<jsp:include page="header.jsp" />
 	<!-- header End-->
 
-	<!-- sign in form -->
-	<section>
-		<div id="agileits-sign-in-page" class="sign-in-wrapper">
-			<div class="agileinfo_signin">
-				<h3>Sign In</h3>
-				<form action="/Resale2/user" method="post">
-
-					<input type="hidden" value="SignIn" name="method"> <input
-						type="email" name="email" placeholder="Your Email" required="">
-					<input type="password" name="password" placeholder="Password"
-						required=""> <input type="submit" value="Sign In1">
-
-				</form>
-
-				<div class="forgot-grid">
-					<label class="checkbox"><input type="checkbox"
-						name="checkbox">Remember me</label>
-					<div class="forgot">
-						<a href="#" data-toggle="modal" data-target="#myModal2">Forgot
-							Password?</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="myModal2" role="dialog">
-						<div class="modal-dialog">
-							<!-- Modal content-->
-							<div class="modal-dialog modal-lg">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h3 class="w3ls-password">Get Password</h3>
-										<p class="get-pw">Enter your email address below and we'll
-											send you an email with instructions.</p>
-										<div>
-											<form action="#" method="post">
-												<input type="text" class="user" name="email"
-													placeholder="Email" required=""> <input
-													type="submit" value="Submit">
-											</form>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-
-				<h6>
-					Not a Member Yet? <a href="signup.jsp">Sign Up Now</a>
-				</h6>
-			</div>
+	<!-- breadcrumbs -->
+	<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href="index.html"><i
+					class="fa fa-home home_1"></i></a> / <span>Post your Ad</span></span>
 		</div>
-	</section>
-	<!-- //sign in form -->
+	</div>
+	<!-- //breadcrumbs -->
+	<!-- Submit Ad -->
+	<div class="submit-ad main-grid-border">
+		<div class="container">
+			<h2 class="w3-head">Post an Ad</h2>
+			<div class="post-ad-form">
+				<form action="/Resale2/product" method="post"
+					enctype="multipart/form-data">
+
+					<input type="hidden" name="method" value="Post_Ad"> <label>Select
+						Category <span>*</span>
+					</label> <select class="" name="category">
+						<c:forEach var="category" items="${categories }">
+							<option value="${category }">${category }</option>
+						</c:forEach>
+					</select>
+					<div class="clearfix"></div>
+					<label>Ad Title <span>*</span></label> <input type="text"
+						class="phone" placeholder="" name="title">
+					<div class="clearfix"></div>
+
+					<label>Any Offer for Ad </label> <input type="text" class="phone"
+						placeholder="post offer" name="offer">
+					<div class="clearfix"></div>
+
+					<label>Ad Description <span>*</span></label>
+					<textarea class="mess"
+						placeholder="Write few lines about your product"
+						name="description"></textarea>
+					<div class="clearfix"></div>
+					<div class="upload-ad-photos">
+						<label>Photos for your ad :</label>
+						<div class="photos-upload-view">
+
+							<div>
+								<input type="file" id="fileselect" multiple="multiple"
+									name="file" />
+								<div id="filedrag">or drop files here</div>
+							</div>
+
+						</div>
+					</div>
+
+
+					<div class="btn btn-primary">
+						<input type="submit" value="Upload Files" />
+					</div>
+				</form>
+			</div>
+			<div class="clearfix"></div>
+			<script src="js/filedrag.js"></script>
+		</div>
+		<!-- 					<div class="personal-details">
+						<form>
+							<label>Your Name <span>*</span></label> <input type="text"
+								class="name" placeholder="">
+							<div class="clearfix"></div>
+							<label>Your Mobile No <span>*</span></label> <input type="text"
+								class="phone" placeholder="">
+							<div class="clearfix"></div>
+							<label>Your Email Address<span>*</span></label> <input
+								type="text" class="email" placeholder="">
+							<div class="clearfix"></div>
+							<p class="post-terms">
+								By clicking <strong>post Button</strong> you accept our <a
+									href="terms.html" target="_blank">Terms of Use </a> and <a
+									href="privacy.html" target="_blank">Privacy Policy</a>
+							</p>
+							<input type="submit" value="Post">
+							<div class="clearfix"></div>
+						</form>
+					</div> -->
+	</div>
+	</div>
+	</div>
+	<!-- // Submit Ad -->
 
 	<!--footer section start-->
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp"></jsp:include>
 	<!--footer section end-->
+
 </body>
 <!-- Navigation-JavaScript -->
 <script src="js/classie.js"></script>

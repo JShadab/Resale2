@@ -36,8 +36,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
 	rel='stylesheet' type='text/css'>
 <!--//fonts-->
+
+<script type="text/javascript">
+function onIndexLoad() {
+	
+	var x='${requestScope.msg}';
+	
+	if(x){
+		
+		alert(x);
+	}
+	
+}
+</script>
 </head>
-<body>
+<body onload="onIndexLoad()">
 
 	<jsp:include page="header.jsp" />
 

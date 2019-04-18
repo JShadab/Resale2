@@ -7,8 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import beans.Product;
 import beans.User;
+import db.repo.ProductRepository;
 import db.repo.UserRepository;
 import enums.RoleLevel;
 
@@ -17,6 +20,7 @@ public class UserServlet extends HttpServlet {
 
 	private static final String SIGN_IN = "SignIn";
 	private static final String SIGN_UP = "SignUp";
+	private static final String POST_AD = "Post_Ad";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +38,9 @@ public class UserServlet extends HttpServlet {
 		} else if (SIGN_UP.equals(method)) {
 			signUp(req, resp);
 			return;
+		} else if (POST_AD.equals(method)) {
+			postAd(req, resp);
+			return;
 		}
 	}
 
@@ -46,8 +53,11 @@ public class UserServlet extends HttpServlet {
 
 		if (user != null) {
 			req.getSession(true).setAttribute("User", user);
-
-			req.getRequestDispatcher("").forward(req, resp);
+			req.setAttribute("msg", "Login Successful..");
+			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		} else {
+			req.setAttribute("msg", "Login failed..");
+			req.getRequestDispatcher("/signin.jsp").forward(req, resp);
 		}
 	}
 
@@ -63,10 +73,9 @@ public class UserServlet extends HttpServlet {
 		String city = req.getParameter("City");
 		String state = req.getParameter("State");
 		String pincode = req.getParameter("PinCode");
-		
-		
-		User user=new User();
-		
+
+		User user = new User();
+
 		user.setAddressLine1(addressLine1);
 		user.setAddressLine2(addressLine2);
 		user.setCategory(category);
@@ -78,11 +87,46 @@ public class UserServlet extends HttpServlet {
 		user.setPincode(pincode);
 		user.setRoleLevel(RoleLevel.USER.toString());
 		user.setState(state);
-		
+
 		boolean isSuccess = UserRepository.createUser(user);
-		
-		if(isSuccess) {
-			resp.sendRedirect("/Resale2/web/signin.jsp");
+
+		if (isSuccess) {
+			resp.sendRedirect("/Resale2/signin.jsp");
+		}
+
+	}
+
+	private void postAd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		HttpSession session = req.getSession(false);
+
+		if (session != null) {
+
+			User user = (User) session.getAttribute("User");
+
+			String category = req.getParameter("category");
+			String title = req.getParameter("title");
+			String offer = req.getParameter("offer");
+			String description = req.getParameter("description");
+			String imageSize = req.getParameter("imageSize");
+			String image = req.getParameter("image");
+
+			Product product = new Product();
+
+			product.setCategory(category);
+			product.setDescription(description);
+			product.setImage(image);
+			product.setOffer(offer);
+			// product.setPrice(price);
+			product.setTitle(title);
+			product.setUser(user);
+
+			boolean isSuccess = ProductRepository.createProduct(product);
+
+			if (isSuccess) {
+				session.setAttribute("products", ProductRepository.getAllProduct());
+				resp.sendRedirect("/Resale2/allUserAds.jsp");
+			}
 		}
 
 	}

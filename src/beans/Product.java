@@ -6,24 +6,24 @@ public class Product {
 
 	private Long id;
 
-	private String name;
 	private String category;
 	private String description;
 	private String price;
+	private String title;
+	private String image;
+	private User user;
 
 	private List<UploadFileResponse> images;
 
-	private Offers offers;
+	private String offer;
 
-	public Offers getOffers() {
-		return offers;
+	public String getOffer() {
+		return offer;
 	}
 
-	public void setOffers(Offers offers) {
-		this.offers = offers;
+	public void setOffer(String offer) {
+		this.offer = offer;
 	}
-
-	private User user;
 
 	public User getUser() {
 		return user;
@@ -41,14 +41,6 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getCategory() {
 		return category;
 	}
@@ -57,14 +49,13 @@ public class Product {
 		this.category = category;
 	}
 
-
 	public Long getUserId() {
 		return user.getId();
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", category=" + category + "]";
+		return "User [id=" + id + ", category=" + category + "]";
 	}
 
 	public List<UploadFileResponse> getImages() {
@@ -89,6 +80,22 @@ public class Product {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
