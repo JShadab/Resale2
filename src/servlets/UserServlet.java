@@ -52,9 +52,17 @@ public class UserServlet extends HttpServlet {
 		User user = UserRepository.findUser(email, password);
 
 		if (user != null) {
+
 			req.getSession(true).setAttribute("User", user);
 			req.setAttribute("msg", "Login Successful..");
-			req.getRequestDispatcher("/index.jsp").forward(req, resp);
+
+			String roleLevel = user.getRoleLevel();
+
+			if (roleLevel.equalsIgnoreCase("User")) {
+				resp.sendRedirect("/Resale2/index.jsp");
+			} else if (roleLevel.equalsIgnoreCase("Admin")) {
+				resp.sendRedirect("/Resale2/admin/dashboard.jsp");
+			}
 		} else {
 			req.setAttribute("msg", "Login failed..");
 			req.getRequestDispatcher("/signin.jsp").forward(req, resp);
@@ -78,7 +86,7 @@ public class UserServlet extends HttpServlet {
 
 		user.setAddressLine1(addressLine1);
 		user.setAddressLine2(addressLine2);
-		user.setCategory(category);
+		// user.setCategory(category);
 		user.setCity(city);
 		user.setContact(contact);
 		user.setEmail(email);

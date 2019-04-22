@@ -5,7 +5,7 @@ public class User {
 	private Long id;
 
 	private String name;
-	private String category;
+	//private String category;
 	private String email;
 	private String password;
 	private String contact;
@@ -65,13 +65,13 @@ public class User {
 		this.name = name;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
+//	public String getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(String category) {
+//		this.category = category;
+//	}
 
 	public String getEmail() {
 		return email;
