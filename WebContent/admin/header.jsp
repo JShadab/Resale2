@@ -6,8 +6,8 @@
 			<nav class="menu">
 				<div class="icon-list">
 					<a href="showUsers.jsp"><i class="fa fa-fw fa-mobile"></i><span>Show
-							Users</span></a> <a href="showAds.jsp"><i
-						class="fa fa-fw fa-laptop"></i><span>Show All Ads</span></a>
+							Users</span></a> <a href="showAds.jsp"><i class="fa fa-fw fa-laptop"></i><span>Show
+							All Ads</span></a>
 				</div>
 			</nav>
 			<button class="close-button" id="close-button">Close Menu</button>
@@ -30,11 +30,11 @@
 		</div>
 		<div class="w3ls-header-right">
 			<ul>
-				<li class="dropdown head-dpdn"><a href="signin.jsp"
+				<li class="dropdown head-dpdn"><a href="/Resale2/signin.jsp"
 					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
 						Sign In</a></li>
-				<li class="dropdown head-dpdn"><a href="help.jsp"><i
-						class="fa fa-question-circle" aria-hidden="true"></i> Help</a></li>
+				<li class="dropdown head-dpdn"><a href="/Resale2/logout"><i
+						class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 				<li class="dropdown head-dpdn"><a href="#"><span
 						class="active uls-trigger"><i class="fa fa-language"
 							aria-hidden="true"></i>languages</span></a></li>

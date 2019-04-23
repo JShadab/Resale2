@@ -3,7 +3,7 @@
 	<footer>
 		<div class="w3-agileits-footer-top">
 			<div class="container">
-				<div class="wthree-foo-grids">
+				<div class="wthree-foo-grids row">
 					<div class="col-md-3 wthree-footer-grid">
 						<h4 class="footer-head">Who We Are</h4>
 						<p>It is a long established fact that a reader will be

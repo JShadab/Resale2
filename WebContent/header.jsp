@@ -45,8 +45,8 @@
 				<li class="dropdown head-dpdn"><a href="signin.jsp"
 					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
 						Sign In</a></li>
-				<li class="dropdown head-dpdn"><a href="help.jsp"><i
-						class="fa fa-question-circle" aria-hidden="true"></i> Help</a></li>
+				<li class="dropdown head-dpdn"><a href="/Resale2/logout"><i
+						class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 				<li class="dropdown head-dpdn"><a href="#"><span
 						class="active uls-trigger"><i class="fa fa-language"
 							aria-hidden="true"></i>languages</span></a></li>

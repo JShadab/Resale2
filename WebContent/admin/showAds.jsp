@@ -30,18 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
 
 
 
@@ -86,8 +76,8 @@ th {
 	<!-- content-starts-here -->
 	<div class="main-content">
 
-	<hr />
-		<h2 align="center">List of Users</h2>
+		<hr />
+		<h2 align="center">List of Ads/Posts</h2>
 
 		<div class="container" style="height: 300">
 			<hr />
@@ -95,26 +85,24 @@ th {
 
 				<tr>
 					<th>S.No</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Contact</th>
-					<th>Address</th>
-					<th>City</th>
-					<th>State</th>
-					<th>PinCode</th>
+					<th>Title</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Image</th>
+					<th>User</th>
+					<th>Description</th>
 
 				</tr>
 
-				<c:forEach var="user" items="${users }" varStatus="i">
+				<c:forEach var="product" items="${products }" varStatus="i">
 					<tr>
 						<td>${i.count }</td>
-						<td>${user.name }</td>
-						<td>${user.email }</td>
-						<td>${user.contact }</td>
-						<td>${user.addressLine1},${user.addressLine2}</td>
-						<td>${user.city }</td>
-						<td>${user.state }</td>
-						<td>${user.pincode }</td>
+						<td>${product.title }</td>
+						<td>${product.category }</td>
+						<td>${product.price }</td>
+						<td>${product.image}</td>
+						<td>${product.user }</td>
+						<td>${product.description }</td>
 					</tr>
 				</c:forEach>
 
