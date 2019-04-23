@@ -1,25 +1,16 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Navigation -->
 <div class="agiletopbar">
 	<div class="wthreenavigation">
 		<div class="menu-wrap">
 			<nav class="menu">
 				<div class="icon-list">
-					<a href="mobiles.jsp"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
-					<a href="electronics-appliances.jsp"><i
-						class="fa fa-fw fa-laptop"></i><span>Electronics and
-							appliances</span></a> <a href="cars.jsp"><i class="fa fa-fw fa-car"></i><span>Cars</span></a>
-					<a href="bikes.jsp"><i class="fa fa-fw fa-motorcycle"></i><span>Bikes</span></a>
-					<a href="furnitures.jsp"><i class="fa fa-fw fa-wheelchair"></i><span>Furniture</span></a>
-					<a href="pets.jsp"><i class="fa fa-fw fa-paw"></i><span>Pets</span></a>
-					<a href="books-sports-hobbies.jsp"><i class="fa fa-fw fa-book"></i><span>Books,
-							Sports & Hobbies</span></a> <a href="fashion.jsp"><i
-						class="fa fa-fw fa-asterisk"></i><span>Fashion</span></a> <a
-						href="kids.jsp"><i class="fa fa-fw fa-asterisk"></i><span>Kids</span></a>
-					<a href="services.jsp"><i class="fa fa-fw fa-shield"></i><span>Services</span></a>
-					<a href="jobs.jsp"><i class="fa fa-fw fa-at"></i><span>Jobs</span></a>
-					<a href="real-estate.jsp"><i class="fa fa-fw fa-home"></i><span>Real
-							Estate</span></a>
+
+					<c:forEach var="category" items="${applicationScope.categories }">
+						<a href="products.jsp?categoryName=${category}"><i
+							class="${category.iconClass}"></i><span>${category}</span></a>
+					</c:forEach>
+
 				</div>
 			</nav>
 			<button class="close-button" id="close-button">Close Menu</button>
@@ -35,8 +26,8 @@
 		<!--header-one-->
 		<div class="w3ls-header-left">
 			<p>
-				<span style="color: white;"> ${sessionScope.User.name }</span> &nbsp; &nbsp; <a
-					href="mobileapp.jsp"><i class="fa fa-download"
+				<span style="color: white;"> ${sessionScope.User.name }</span>
+				&nbsp; &nbsp; <a href="mobileapp.jsp"><i class="fa fa-download"
 					aria-hidden="true"></i>Download Mobile App </a>
 			</p>
 		</div>
@@ -126,19 +117,9 @@
 						placeholder="How can we help you today?" required="" /> <select
 						id="agileinfo_search" name="agileinfo_search" required="">
 						<option value="">All Categories</option>
-						<option value="Mobiles">Mobiles</option>
-						<option value="Electronics & Appliances">Electronics &
-							Appliances</option>
-						<option value="Cars">Cars</option>
-						<option value="Bikes">Bikes</option>
-						<option value="Furnitures">Furnitures</option>
-						<option value="Books, Sports & Hobbies">Books, Sports &
-							Hobbies</option>
-						<option value="Fashion">Fashion</option>
-						<option value="Kids">Kids</option>
-						<option value="Services">Services</option>
-						<option value="Jobs">Jobs</option>
-						<option value="Real Estates">Real Estates</option>
+						<c:forEach var="category" items="${applicationScope.categories }">
+							<option value="${category}">${category}</option>
+						</c:forEach>
 					</select>
 					<button type="submit" class="btn btn-default"
 						aria-label="Left Align">

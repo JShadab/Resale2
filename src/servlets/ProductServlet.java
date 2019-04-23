@@ -60,6 +60,7 @@ public class ProductServlet extends HttpServlet {
 			String category = request.getParameter("category");
 			String title = request.getParameter("title");
 			String offer = request.getParameter("offer");
+			float price = Float.parseFloat(request.getParameter("price"));
 			String description = request.getParameter("description");
 
 			final Part filePart = request.getPart("file");
@@ -75,7 +76,7 @@ public class ProductServlet extends HttpServlet {
 			product.setDescription(description);
 			product.setImage(fileName);
 			product.setOffer(offer);
-			// product.setPrice(price);
+			product.setPrice(price);
 			product.setTitle(title);
 			product.setUser(user);
 

@@ -22,42 +22,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 
 <script type="application/x-javascript">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 <!-- //meta tags -->
@@ -127,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="menu-wrap">
 				<nav class="menu">
 					<div class="icon-list">
-						<a href="mobiles.html"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
+						<a href="products.jsp"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
 						<a href="electronics-appliances.html"><i
 							class="fa fa-fw fa-laptop"></i><span>Electronics and
 								appliances</span></a> <a href="cars.html"><i class="fa fa-fw fa-car"></i><span>Cars</span></a>
@@ -186,6 +151,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<label>Any Offer for Ad </label> <input type="text" class="phone"
 						placeholder="post offer" name="offer">
+					<div class="clearfix"></div>
+					
+					<label>Price </label> <input type="text" class="phone"
+						placeholder="price" name="price">
 					<div class="clearfix"></div>
 
 					<label>Ad Description <span>*</span></label>

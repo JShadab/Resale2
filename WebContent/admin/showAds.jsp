@@ -94,7 +94,7 @@ th {
 
 				</tr>
 
-				<c:forEach var="product" items="${products }" varStatus="i">
+				<c:forEach var="product" items="${posts }" varStatus="i">
 					<tr>
 						<td>${i.count }</td>
 						<td>${product.title }</td>

@@ -107,7 +107,7 @@ function onSignInLoad() {
 			<div class="menu-wrap">
 				<nav class="menu">
 					<div class="icon-list">
-						<a href="mobiles.html"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
+						<a href="products.jsp"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
 						<a href="electronics-appliances.html"><i
 							class="fa fa-fw fa-laptop"></i><span>Electronics and
 								appliances</span></a> <a href="cars.html"><i class="fa fa-fw fa-car"></i><span>Cars</span></a>

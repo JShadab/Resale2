@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Navigation -->
 <div class="agiletopbar">
 	<div class="wthreenavigation">
@@ -105,7 +105,7 @@
 		<div class="agile-its-header">
 			<div class="logo">
 				<h1>
-					<a href="index.jsp"><span>Re</span>sale</a>
+					<a href="/Resale2/index.jsp"><span>Re</span>sale</a>
 				</h1>
 			</div>
 			<div class="agileits_search">
@@ -114,26 +114,16 @@
 						placeholder="How can we help you today?" required="" /> <select
 						id="agileinfo_search" name="agileinfo_search" required="">
 						<option value="">All Categories</option>
-						<option value="Mobiles">Mobiles</option>
-						<option value="Electronics & Appliances">Electronics &
-							Appliances</option>
-						<option value="Cars">Cars</option>
-						<option value="Bikes">Bikes</option>
-						<option value="Furnitures">Furnitures</option>
-						<option value="Books, Sports & Hobbies">Books, Sports &
-							Hobbies</option>
-						<option value="Fashion">Fashion</option>
-						<option value="Kids">Kids</option>
-						<option value="Services">Services</option>
-						<option value="Jobs">Jobs</option>
-						<option value="Real Estates">Real Estates</option>
+						<c:forEach var="category" items="${applicationScope.categories }">
+							<option value="${category}">${category}</option>
+						</c:forEach>
 					</select>
 					<button type="submit" class="btn btn-default"
 						aria-label="Left Align">
 						<i class="fa fa-search" aria-hidden="true"> </i>
 					</button>
 				</form>
-				<a class="post-w3layouts-ad" href="post-ad.jsp">Post Free Ad</a>
+				<!-- <a class="post-w3layouts-ad" href="post-ad.jsp">Post Free Ad</a> -->
 			</div>
 			<div class="clearfix"></div>
 		</div>

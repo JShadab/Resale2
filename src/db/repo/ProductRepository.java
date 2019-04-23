@@ -112,7 +112,7 @@ public class ProductRepository {
 
 		boolean isSucces = false;
 
-		String insert = "INSERT INTO products (category, title, description, images, price, offer, user_id) values (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO products (category, title, description, image, price, offer, user_id) values (?,?,?,?,?,?,?)";
 
 		try (Connection connection = DBConnection.getConnection();) {
 
@@ -122,7 +122,7 @@ public class ProductRepository {
 			ps.setString(2, product.getTitle());
 			ps.setString(3, product.getDescription());
 			ps.setString(4, product.getImage());
-			ps.setString(5, product.getPrice());
+			ps.setFloat(5, product.getPrice());
 			ps.setString(6, product.getOffer());
 			ps.setLong(7, product.getUser().getId());
 
