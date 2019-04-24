@@ -1,4 +1,4 @@
-package filters;
+package filters.admin;
 
 import java.io.IOException;
 
@@ -17,6 +17,12 @@ public class ShowUsersFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
+
+		String idStr = req.getParameter("id");
+		if (idStr != null) {
+			long id = Long.parseLong(idStr);
+			UserRepository.deleteUser(id);
+		}
 
 		req.setAttribute("users", UserRepository.getAllUser());
 

@@ -25,13 +25,10 @@
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
+		 addEventListener("load", function() { 
+		 setTimeout(hideURLbar, 0); }, false); 
+	 function hideURLbar(){ window.scrollTo(0,1); 
+	 } 
 </script>
 <!-- //meta tags -->
 <!--fonts-->
@@ -70,47 +67,30 @@ th {
 	<!-- content-starts-here -->
 	<div class="main-content">
 
-		<hr />
-		<h2 align="center">List of Users</h2>
+		<section>
+			<div id="agileits-sign-in-page" class="sign-in-wrapper">
+				<div class="agileinfo_signin">
+					<h3>Update User Details</h3>
+					<form action="/Resale2/user" method="post">
+						<input type="hidden" value="update" name="method"> <input
+							type="text" name="Name" value="${user.name }" required="">
 
-		<div class="container" style="height: 300">
-			<hr />
-			<table class="table table-bordered">
-
-				<tr>
-					<th>S.No</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Contact</th>
-					<th>Address</th>
-					<th>City</th>
-					<th>State</th>
-					<th>PinCode</th>
-					<th>Edit</th>
-					<th>Delete</th>
-
-				</tr>
-
-				<c:forEach var="user" items="${users }" varStatus="i">
-					<tr>
-						<td>${i.count }</td>
-						<td>${user.name }</td>
-						<td>${user.email }</td>
-						<td>${user.contact }</td>
-						<td>${user.addressLine1},${user.addressLine2}</td>
-						<td>${user.city }</td>
-						<td>${user.state }</td>
-						<td>${user.pincode }</td>
-						<td><a href="/Resale2/admin/editUser.jsp?id=${user.id }"
-							class="btn btn-info">Edit</a></td>
-						<td><a href="/Resale2/admin/showUsers.jsp?id=${user.id }"
-							class="btn btn-danger">Delete</a></td>
-					</tr>
-				</c:forEach>
-
-
-			</table>
-		</div>
+						<input type="email" name="Email" value="${user.email }"
+							readonly="readonly"> <input type="tel"
+							value="${user.contact }" name="Mobile" required=""> <input
+							type="password" name="Password" value="${user.password}"
+							required=""> <input type="text" name="AddressLine1"
+							value="${user.addressLine1 }" required=""> <input
+							type="text" name="AddressLine2" value="${user.addressLine2 }"
+							required=""> <input type="text" name="City"
+							value="${user.city }" required=""> <input type="text"
+							name="State" value="${user.state}" required=""> <input
+							type="text" name="PinCode" value="${user.pincode }" required="">
+						<input type="submit" value="Update">
+					</form>
+				</div>
+			</div>
+		</section>
 	</div>
 
 	<!--footer section start-->

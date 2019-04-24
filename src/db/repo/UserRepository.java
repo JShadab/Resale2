@@ -55,7 +55,45 @@ public class UserRepository {
 	}
 
 	public static User findUser(long id) {
-		return null;
+
+		User user = null;
+
+		String insert = "SELECT * FROM users WHERE id=?";
+
+		try (Connection connection = DBConnection.getConnection();) {
+
+			PreparedStatement ps = connection.prepareStatement(insert);
+
+			ps.setLong(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+
+				user = new User();
+
+				user.setId(rs.getLong("id"));
+				user.setAddressLine1(rs.getString("addressLine1"));
+				user.setAddressLine2(rs.getString("addressLine2"));
+				// user.setCategory(rs.getString("category"));
+				user.setCity(rs.getString("city"));
+				user.setContact(rs.getString("contact"));
+				user.setEmail(rs.getString("email"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setPincode(rs.getString("pincode"));
+				user.setRoleLevel(rs.getString("roleLevel"));
+				user.setState(rs.getString("state"));
+
+			}
+
+			ps.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	public static List<User> getAllUser() {
@@ -137,7 +175,25 @@ public class UserRepository {
 	public static void updateUser(User user) {
 	}
 
-	public static void deleteUser(int id) {
+	public static void deleteUser(long id) {
+
+		String delete = "DELETE FROM users WHERE id=?";
+
+		try (Connection connection = DBConnection.getConnection();) {
+
+			PreparedStatement ps = connection.prepareStatement(delete);
+
+			ps.setLong(1, id);
+
+			ps.executeUpdate();
+
+			ps.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 
 }

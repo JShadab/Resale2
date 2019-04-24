@@ -25,18 +25,7 @@
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	
-	
-	
-
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
 
 </script>
 <!-- //meta tags -->
@@ -91,6 +80,8 @@ th {
 					<th>Image</th>
 					<th>User</th>
 					<th>Description</th>
+						<th>Edit</th>
+					<th>Delete</th>
 
 				</tr>
 
@@ -103,6 +94,10 @@ th {
 						<td>${product.image}</td>
 						<td>${product.user }</td>
 						<td>${product.description }</td>
+									<td><a href="/Resale2/admin/editAd.jsp?id=${user.id }"
+							class="btn btn-info">Edit</a></td>
+						<td><a href="/Resale2/admin/showAdss.jsp?id=${user.id }"
+							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 

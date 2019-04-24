@@ -17,7 +17,7 @@ public class ProductRepository {
 		return null;
 	}
 
-	public static Product findProduct(int id) {
+	public static Product findProduct(long id) {
 		return null;
 	}
 
@@ -143,7 +143,25 @@ public class ProductRepository {
 	public static void updateProduct(Product user) {
 	}
 
-	public static void deleteProduct(int id) {
+	public static void deleteProduct(long id) {
+
+		String delete = "DELETE FROM products WHERE id=?";
+
+		try (Connection connection = DBConnection.getConnection();) {
+
+			PreparedStatement ps = connection.prepareStatement(delete);
+
+			ps.setLong(1, id);
+
+			ps.executeUpdate();
+
+			ps.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package filters;
+package filters.admin;
 
 import java.io.IOException;
 
@@ -17,6 +17,12 @@ public class ShowPostsFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
+		
+		String idStr = req.getParameter("id");
+		if (idStr != null) {
+			long id = Long.parseLong(idStr);
+			ProductRepository.deleteProduct(id);
+		}
 
 		req.setAttribute("posts", ProductRepository.getAllProduct());
 
