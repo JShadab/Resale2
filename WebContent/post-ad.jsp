@@ -22,9 +22,63 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 
 <script type="application/x-javascript">
+	
+	
+	
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
+</script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- bootstrap-CSS -->
+<link rel="stylesheet" href="css/bootstrap-select.css">
+<!-- bootstrap-select-CSS -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- style.css -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css"
+	media="screen" />
+<!-- flexslider-CSS -->
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<!-- fontawesome-CSS -->
+<link rel="stylesheet" href="css/menu_sideslide.css" type="text/css"
+	media="all">
+<!-- Navigation-CSS -->
+<!-- meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
 </script>
+<!-- //meta tags -->
+<!--fonts-->
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
+	rel='stylesheet' type='text/css'>
+<link
+	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
+<!--//fonts-->
+
+<script type="text/javascript">
+	function onIndexLoad() {
+
+		var x = '${requestScope.msg}';
+
+		if (x) {
+
+			alert(x);
+		}
+
+	}
+</script>
+
 <!-- //meta tags -->
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
@@ -85,37 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- //language-select -->
 </head>
-<body>
-	<!-- Navigation -->
-	<div class="agiletopbar">
-		<div class="wthreenavigation">
-			<div class="menu-wrap">
-				<nav class="menu">
-					<div class="icon-list">
-						<a href="products.jsp"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
-						<a href="electronics-appliances.html"><i
-							class="fa fa-fw fa-laptop"></i><span>Electronics and
-								appliances</span></a> <a href="cars.html"><i class="fa fa-fw fa-car"></i><span>Cars</span></a>
-						<a href="bikes.html"><i class="fa fa-fw fa-motorcycle"></i><span>Bikes</span></a>
-						<a href="furnitures.html"><i class="fa fa-fw fa-wheelchair"></i><span>Furnitures</span></a>
-						<a href="pets.html"><i class="fa fa-fw fa-paw"></i><span>Pets</span></a>
-						<a href="books-sports-hobbies.html"><i
-							class="fa fa-fw fa-book"></i><span>Books, Sports & Hobbies</span></a>
-						<a href="fashion.html"><i class="fa fa-fw fa-asterisk"></i><span>Fashion</span></a>
-						<a href="kids.html"><i class="fa fa-fw fa-asterisk"></i><span>Kids</span></a>
-						<a href="services.html"><i class="fa fa-fw fa-shield"></i><span>Services</span></a>
-						<a href="jobs.html"><i class="fa fa-fw fa-at"></i><span>Jobs</span></a>
-						<a href="real-estate.html"><i class="fa fa-fw fa-home"></i><span>Real
-								Estate</span></a>
-					</div>
-				</nav>
-				<button class="close-button" id="close-button">Close Menu</button>
-			</div>
-			<button class="menu-button" id="open-button"></button>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-	<!-- //Navigation -->
+<body onload="onIndexLoad()">
 
 	<!-- header Start-->
 	<jsp:include page="header.jsp" />
@@ -152,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<label>Any Offer for Ad </label> <input type="text" class="phone"
 						placeholder="post offer" name="offer">
 					<div class="clearfix"></div>
-					
+
 					<label>Price </label> <input type="text" class="phone"
 						placeholder="price" name="price">
 					<div class="clearfix"></div>
@@ -167,8 +191,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="photos-upload-view">
 
 							<div>
-								<input type="file" id="fileselect" multiple="multiple"
-									name="file" />
+								<input type="file" id="fileselect" name="file1" /><br> <input
+									type="file" id="fileselect" name="file2" /><br> <input
+									type="file" id="fileselect" name="file3" /><br> <input
+									type="file" id="fileselect" name="file4" /><br> <input
+									type="file" id="fileselect" name="file5" /><br>
+
 								<div id="filedrag">or drop files here</div>
 							</div>
 
@@ -205,8 +233,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</form>
 					</div> -->
 	</div>
-	</div>
-	</div>
+
+
 	<!-- // Submit Ad -->
 
 	<!--footer section start-->

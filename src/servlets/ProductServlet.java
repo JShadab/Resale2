@@ -1,13 +1,7 @@
 package servlets;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -31,7 +25,7 @@ public class ProductServlet extends HttpServlet {
 
 	private static final String POST_AD = "Post_Ad";
 
-	private static final String uploadFilePath = "C:\\WorkSpace_2019_March\\Resale2\\WebContent\\uploads";
+	private static final String uploadFilePath = "C:\\Users\\Shadab\\eclipse-workspace\\Resale2\\WebContent\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -63,18 +57,49 @@ public class ProductServlet extends HttpServlet {
 			float price = Float.parseFloat(request.getParameter("price"));
 			String description = request.getParameter("description");
 
-			final Part filePart = request.getPart("file");
-			final String fileName = getFileName(filePart);
-
-			filePart.write(uploadFilePath + File.separator + fileName);
-
 			User user = (User) session.getAttribute("User");
 
 			Product product = new Product();
 
 			product.setCategory(category);
 			product.setDescription(description);
-			product.setImage(fileName);
+
+			final Part filePart1 = request.getPart("file1");
+			final Part filePart2 = request.getPart("file2");
+			final Part filePart3 = request.getPart("file3");
+			final Part filePart4 = request.getPart("file4");
+			final Part filePart5 = request.getPart("file5");
+
+			if (filePart1 != null) {
+				final String fileName1 = getFileName(filePart1);
+				filePart1.write(uploadFilePath + File.separator + fileName1);
+				product.setImage1(fileName1);
+			}
+
+			if (filePart2 != null) {
+				final String fileName2 = getFileName(filePart2);
+				filePart2.write(uploadFilePath + File.separator + fileName2);
+				product.setImage2(fileName2);
+			}
+
+			if (filePart3 != null) {
+				final String fileName3 = getFileName(filePart3);
+				filePart3.write(uploadFilePath + File.separator + fileName3);
+				product.setImage3(fileName3);
+			}
+
+			if (filePart4 != null) {
+				final String fileName4 = getFileName(filePart4);
+				filePart4.write(uploadFilePath + File.separator + fileName4);
+				product.setImage4(fileName4);
+			}
+
+			if (filePart5 != null) {
+				final String fileName5 = getFileName(filePart5);
+				filePart5.write(uploadFilePath + File.separator + fileName5);
+				product.setImage5(fileName5);
+			}
+
 			product.setOffer(offer);
 			product.setPrice(price);
 			product.setTitle(title);
@@ -91,7 +116,7 @@ public class ProductServlet extends HttpServlet {
 	}
 
 	private String getFileName(final Part part) {
-		final String partHeader = part.getHeader("content-disposition");
+		// final String partHeader = part.getHeader("content-disposition");
 		for (String content : part.getHeader("content-disposition").split(";")) {
 			if (content.trim().startsWith("filename")) {
 				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");

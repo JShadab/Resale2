@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DBConnection {
 
 	private static final String DRIVER_CLASS = "org.mariadb.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mariadb://localhost:3307/resale";
+	private static final String DB_URL = "jdbc:mariadb://localhost:3306/resale";
 	private static final String DB_USER = "root";
 	private static final String DB_PASS = "root";
 

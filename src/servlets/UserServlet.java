@@ -116,14 +116,13 @@ public class UserServlet extends HttpServlet {
 			String title = req.getParameter("title");
 			String offer = req.getParameter("offer");
 			String description = req.getParameter("description");
-			String imageSize = req.getParameter("imageSize");
 			String image = req.getParameter("image");
 
 			Product product = new Product();
 
 			product.setCategory(category);
 			product.setDescription(description);
-			product.setImage(image);
+			product.setImage1(image);
 			product.setOffer(offer);
 			// product.setPrice(price);
 			product.setTitle(title);

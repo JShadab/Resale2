@@ -40,7 +40,13 @@ public class ProductRepository {
 				product.setCategory(rs.getString("category"));
 				product.setDescription(rs.getString("description"));
 				product.setId(rs.getLong("id"));
-				product.setImage(rs.getString("image"));
+
+				product.setImage1(rs.getString("image1"));
+				product.setImage2(rs.getString("image2"));
+				product.setImage3(rs.getString("image3"));
+				product.setImage4(rs.getString("image4"));
+				product.setImage5(rs.getString("image5"));
+
 				product.setOffer(rs.getString("offer"));
 				product.setTitle(rs.getString("title"));
 
@@ -64,7 +70,7 @@ public class ProductRepository {
 
 	}
 
-	public static List<Product> getAllProduct(long userId) {
+	public static List<Product> getAllProduct(User user) {
 
 		String select = "SELECT * FROM products WHERE user_id=?";
 
@@ -74,7 +80,7 @@ public class ProductRepository {
 
 			PreparedStatement ps = connection.prepareStatement(select);
 
-			ps.setLong(1, userId);
+			ps.setLong(1, user.getId());
 
 			ResultSet rs = ps.executeQuery();
 
@@ -85,11 +91,16 @@ public class ProductRepository {
 				product.setCategory(rs.getString("category"));
 				product.setDescription(rs.getString("description"));
 				product.setId(rs.getLong("id"));
-				product.setImage(rs.getString("image"));
+
+				product.setImage1(rs.getString("image1"));
+				product.setImage2(rs.getString("image2"));
+				product.setImage3(rs.getString("image3"));
+				product.setImage4(rs.getString("image4"));
+				product.setImage5(rs.getString("image5"));
+
 				product.setOffer(rs.getString("offer"));
 				product.setTitle(rs.getString("title"));
 
-				User user = UserRepository.findUser(userId);
 				product.setUser(user);
 
 				products.add(product);
@@ -112,7 +123,7 @@ public class ProductRepository {
 
 		boolean isSucces = false;
 
-		String insert = "INSERT INTO products (category, title, description, image, price, offer, user_id) values (?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO products (category, title, description, image1, image2, image3, image4, image5, price, offer, user_id) values (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = DBConnection.getConnection();) {
 
@@ -121,10 +132,16 @@ public class ProductRepository {
 			ps.setString(1, product.getCategory());
 			ps.setString(2, product.getTitle());
 			ps.setString(3, product.getDescription());
-			ps.setString(4, product.getImage());
-			ps.setFloat(5, product.getPrice());
-			ps.setString(6, product.getOffer());
-			ps.setLong(7, product.getUser().getId());
+
+			ps.setString(4, product.getImage1());
+			ps.setString(5, product.getImage2());
+			ps.setString(6, product.getImage3());
+			ps.setString(7, product.getImage4());
+			ps.setString(8, product.getImage5());
+
+			ps.setFloat(9, product.getPrice());
+			ps.setString(10, product.getOffer());
+			ps.setLong(11, product.getUser().getId());
 
 			ps.executeUpdate();
 

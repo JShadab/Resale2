@@ -25,12 +25,10 @@
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
+		 addEventListener("load", function() { 
+		 setTimeout(hideURLbar, 0); }, false); 
+	 function hideURLbar(){ window.scrollTo(0,1); 
+	 } 
 </script>
 <!-- //meta tags -->
 <!--fonts-->
@@ -69,46 +67,30 @@ th {
 	<!-- content-starts-here -->
 	<div class="main-content">
 
-		<hr />
-		<h2 align="center">List of Ads/Posts</h2>
+		<section>
+			<div id="agileits-sign-in-page" class="sign-in-wrapper">
+				<div class="agileinfo_signin">
+					<h3>Update User Details</h3>
+					<form action="/Resale2/user" method="post">
+						<input type="hidden" value="update" name="method"> <input
+							type="text" name="Name" value="${user.name }" required="">
 
-		<div class="container" style="height: 300">
-			<hr />
-			<table class="table table-bordered">
-
-				<tr>
-					<th>S.No</th>
-					<th>Title</th>
-					<th>Category</th>
-					<th>Price</th>
-					<th>Image</th>
-					<th>User</th>
-					<th>Description</th>
-					<th>Edit</th>
-					<th>Delete</th>
-
-				</tr>
-
-				<c:forEach var="product" items="${posts }" varStatus="i">
-					<tr>
-						<td>${i.count }</td>
-						<td>${product.title }</td>
-						<td>${product.category }</td>
-						<td>${product.price }</td>
-						<td><img src="/Resale2/uploads/${product.image}"
-							class="img-thumbnail" height="100" width="100" /></td>
-						<td>${product.user }</td>
-						<td>${product.description }</td>
-						<td><a href="/Resale2/admin/editAds.jsp?id=${product.id}"
-							class="btn btn-info">Edit</a></td>
-						<td><a href="/Resale2/admin/showAdss.jsp?id=${product.id }"
-							class="btn btn-danger">Delete</a></td>
-					</tr>
-				</c:forEach>
-
-
-			</table>
-		</div>
+						<input type="email" name="Email" value="${user.email }"
+							readonly="readonly"> <input type="tel"
+							value="${user.contact }" name="Mobile" required=""> <input
+							type="password" name="Password" value="${user.password}"
+							required=""> <input type="text" name="AddressLine1"
+							value="${user.addressLine1 }" required=""> <input
+							type="text" name="AddressLine2" value="${user.addressLine2 }"
+							required=""> <input type="text" name="City"
+							value="${user.city }" required=""> <input type="text"
+							name="State" value="${user.state}" required=""> <input
+							type="text" name="PinCode" value="${user.pincode }" required="">
+						<input type="submit" value="Update">
+					</form>
+				</div>
+			</div>
+		</section>
 	</div>
 
 	<!--footer section start-->

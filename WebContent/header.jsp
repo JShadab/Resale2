@@ -33,6 +33,13 @@
 		</div>
 		<div class="w3ls-header-right">
 			<ul>
+			
+				<c:if test="${ not empty  sessionScope.User}">
+					<li class="dropdown head-dpdn"><a href="showMyAds.jsp"
+					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+						Show My Ads</a></li>
+				</c:if>
+			
 				<li class="dropdown head-dpdn"><a href="signin.jsp"
 					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
 						Sign In</a></li>
@@ -126,7 +133,11 @@
 						<i class="fa fa-search" aria-hidden="true"> </i>
 					</button>
 				</form>
-				<a class="post-w3layouts-ad" href="post-ad.jsp">Post Free Ad</a>
+
+				<c:if test="${ not empty  sessionScope.User}">
+					<a class="post-w3layouts-ad" href="post-ad.jsp">Post Free Ad</a>
+				</c:if>
+
 			</div>
 			<div class="clearfix"></div>
 		</div>

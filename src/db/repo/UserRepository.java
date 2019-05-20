@@ -34,7 +34,7 @@ public class UserRepository {
 				user.setId(rs.getLong("id"));
 				user.setAddressLine1(rs.getString("addressLine1"));
 				user.setAddressLine2(rs.getString("addressLine2"));
-				// user.setCategory(rs.getString("category"));
+				user.setCategory(rs.getString("category"));
 				user.setCity(rs.getString("city"));
 				user.setContact(rs.getString("contact"));
 				user.setEmail(email);
@@ -75,7 +75,7 @@ public class UserRepository {
 				user.setId(rs.getLong("id"));
 				user.setAddressLine1(rs.getString("addressLine1"));
 				user.setAddressLine2(rs.getString("addressLine2"));
-				// user.setCategory(rs.getString("category"));
+				user.setCategory(rs.getString("category"));
 				user.setCity(rs.getString("city"));
 				user.setContact(rs.getString("contact"));
 				user.setEmail(rs.getString("email"));
@@ -100,22 +100,24 @@ public class UserRepository {
 
 		List<User> users = new ArrayList<User>();
 
-		String insert = "SELECT * FROM users";
+		String insert = "SELECT * FROM users WHERE rolelevel=?";
 
 		try (Connection connection = DBConnection.getConnection();) {
 
 			PreparedStatement ps = connection.prepareStatement(insert);
 
+			ps.setString(1, "User");
+
 			ResultSet rs = ps.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 
 				User user = new User();
 
 				user.setId(rs.getLong("id"));
 				user.setAddressLine1(rs.getString("addressLine1"));
 				user.setAddressLine2(rs.getString("addressLine2"));
-				// user.setCategory(rs.getString("category"));
+				user.setCategory(rs.getString("category"));
 				user.setCity(rs.getString("city"));
 				user.setContact(rs.getString("contact"));
 				user.setEmail(rs.getString("email"));
@@ -151,7 +153,7 @@ public class UserRepository {
 			ps.setString(2, user.getEmail());
 			ps.setString(3, user.getPassword());
 			ps.setString(4, user.getContact());
-			// ps.setString(5, user.getCategory());
+			ps.setString(5, user.getCategory());
 			ps.setString(6, user.getAddressLine1());
 			ps.setString(7, user.getAddressLine2());
 			ps.setString(8, user.getRoleLevel());
