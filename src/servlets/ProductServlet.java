@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import beans.Offers;
 import beans.Product;
 import beans.User;
 import db.repo.ProductRepository;
@@ -53,7 +54,7 @@ public class ProductServlet extends HttpServlet {
 			// Create path components to save the file
 			String category = request.getParameter("category");
 			String title = request.getParameter("title");
-			String offer = request.getParameter("offer");
+			String offerDesc = request.getParameter("offer");
 			float price = Float.parseFloat(request.getParameter("price"));
 			String description = request.getParameter("description");
 
@@ -100,7 +101,10 @@ public class ProductServlet extends HttpServlet {
 				product.setImage5(fileName5);
 			}
 
+			Offers offer = new Offers();
+			offer.setDescription(offerDesc);
 			product.setOffer(offer);
+
 			product.setPrice(price);
 			product.setTitle(title);
 			product.setUser(user);

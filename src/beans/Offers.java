@@ -8,7 +8,7 @@ public class Offers {
 
 	private String description;
 
-	private Date expiryDate;
+	private Date expiryDate=new Date(11111111);
 
 	public Long getId() {
 		return id;

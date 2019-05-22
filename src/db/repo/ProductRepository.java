@@ -7,15 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.Offers;
 import beans.Product;
 import beans.User;
 import db.DBConnection;
 
 public class ProductRepository {
-
-	public static Product findProduct(String email, String password) {
-		return null;
-	}
 
 	public static Product findProduct(long id) {
 		return null;
@@ -37,9 +34,10 @@ public class ProductRepository {
 
 				Product product = new Product();
 
-				product.setCategory(rs.getString("category"));
-				product.setDescription(rs.getString("description"));
 				product.setId(rs.getLong("id"));
+				product.setCategory(rs.getString("category"));
+				product.setTitle(rs.getString("title"));
+				product.setDescription(rs.getString("description"));
 
 				product.setImage1(rs.getString("image1"));
 				product.setImage2(rs.getString("image2"));
@@ -47,8 +45,10 @@ public class ProductRepository {
 				product.setImage4(rs.getString("image4"));
 				product.setImage5(rs.getString("image5"));
 
-				product.setOffer(rs.getString("offer"));
-				product.setTitle(rs.getString("title"));
+				product.setPrice(rs.getFloat("price"));
+
+				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				product.setOffer(offer);
 
 				User user = UserRepository.findUser(rs.getLong("user_id"));
 				product.setUser(user);
@@ -68,6 +68,59 @@ public class ProductRepository {
 
 		return products;
 
+	}
+
+	public static List<Product> getAllProduct(String category) {
+
+		String select = "SELECT * FROM products WHERE category=?";
+
+		List<Product> products = new ArrayList<Product>();
+
+		try (Connection connection = DBConnection.getConnection();) {
+
+			PreparedStatement ps = connection.prepareStatement(select);
+
+			ps.setString(1, category);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Product product = new Product();
+
+				product.setCategory(rs.getString("category"));
+				product.setDescription(rs.getString("description"));
+				product.setId(rs.getLong("id"));
+
+				product.setImage1(rs.getString("image1"));
+				product.setImage2(rs.getString("image2"));
+				product.setImage3(rs.getString("image3"));
+				product.setImage4(rs.getString("image4"));
+				product.setImage5(rs.getString("image5"));
+
+				product.setTitle(rs.getString("title"));
+				product.setPrice(rs.getFloat("price"));
+
+				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				product.setOffer(offer);
+
+				User user = UserRepository.findUser(rs.getLong("user_id"));
+				product.setUser(user);
+
+				products.add(product);
+
+			}
+
+			rs.close();
+
+			ps.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return products;
 	}
 
 	public static List<Product> getAllProduct(User user) {
@@ -98,8 +151,11 @@ public class ProductRepository {
 				product.setImage4(rs.getString("image4"));
 				product.setImage5(rs.getString("image5"));
 
-				product.setOffer(rs.getString("offer"));
 				product.setTitle(rs.getString("title"));
+				product.setPrice(rs.getFloat("price"));
+
+				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				product.setOffer(offer);
 
 				product.setUser(user);
 
@@ -123,7 +179,7 @@ public class ProductRepository {
 
 		boolean isSucces = false;
 
-		String insert = "INSERT INTO products (category, title, description, image1, image2, image3, image4, image5, price, offer, user_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO products (category, title, description, image1, image2, image3, image4, image5, price, offer_id, user_id) values (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = DBConnection.getConnection();) {
 
@@ -140,7 +196,7 @@ public class ProductRepository {
 			ps.setString(8, product.getImage5());
 
 			ps.setFloat(9, product.getPrice());
-			ps.setString(10, product.getOffer());
+			ps.setLong(10, product.getOffer().getId());
 			ps.setLong(11, product.getUser().getId());
 
 			ps.executeUpdate();

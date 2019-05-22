@@ -3,7 +3,7 @@ package beans;
 import java.io.Serializable;
 import java.util.List;
 
-public class Product implements Serializable{
+public class Product implements Serializable {
 
 	private Long id;
 
@@ -17,18 +17,9 @@ public class Product implements Serializable{
 	private String image4;
 	private String image5;
 	private User user;
+	private Offers offer;
 
 	private List<UploadFileResponse> images;
-
-	private String offer;
-
-	public String getOffer() {
-		return offer;
-	}
-
-	public void setOffer(String offer) {
-		this.offer = offer;
-	}
 
 	public User getUser() {
 		return user;
@@ -135,6 +126,12 @@ public class Product implements Serializable{
 		this.image5 = image5;
 	}
 
+	public Offers getOffer() {
+		return offer;
+	}
 
+	public void setOffer(Offers offer) {
+		this.offer = offer;
+	}
 
 }

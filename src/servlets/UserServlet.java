@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.Offers;
 import beans.Product;
 import beans.User;
 import db.repo.ProductRepository;
@@ -114,7 +115,7 @@ public class UserServlet extends HttpServlet {
 
 			String category = req.getParameter("category");
 			String title = req.getParameter("title");
-			String offer = req.getParameter("offer");
+			String offerDesc = req.getParameter("offer");
 			String description = req.getParameter("description");
 			String image = req.getParameter("image");
 
@@ -123,7 +124,11 @@ public class UserServlet extends HttpServlet {
 			product.setCategory(category);
 			product.setDescription(description);
 			product.setImage1(image);
+			
+			Offers offer = new Offers();
+			offer.setDescription(offerDesc);
 			product.setOffer(offer);
+
 			// product.setPrice(price);
 			product.setTitle(title);
 			product.setUser(user);

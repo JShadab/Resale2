@@ -11,8 +11,8 @@ public class OffersRepository {
 		return null;
 	}
 
-	public static Offers findOffers(int id) {
-		return null;
+	public static Offers findOffers(long id) {
+		return new Offers();
 	}
 
 	public static List<Offers> getAllOffers() {
