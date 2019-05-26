@@ -33,77 +33,23 @@
 		</div>
 		<div class="w3ls-header-right">
 			<ul>
-			
+
 				<c:if test="${ not empty  sessionScope.User}">
 					<li class="dropdown head-dpdn"><a href="showMyAds.jsp"
-					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-						Show My Ads</a></li>
+						aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+							Show My Ads</a></li>
 				</c:if>
-			
+
 				<li class="dropdown head-dpdn"><a href="signin.jsp"
 					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
 						Sign In</a></li>
 				<li class="dropdown head-dpdn"><a href="/Resale2/logout"><i
 						class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
-				<li class="dropdown head-dpdn"><a href="#"><span
-						class="active uls-trigger"><i class="fa fa-language"
-							aria-hidden="true"></i>languages</span></a></li>
+
 				<li class="dropdown head-dpdn">
 					<div class="header-right">
 						<!-- Large modal -->
-						<div class="agile-its-selectregion">
-							<button class="btn btn-primary" data-toggle="modal"
-								data-target="#myModal">
-								<i class="fa fa-globe" aria-hidden="true"></i>Select City
-							</button>
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-								aria-hidden="true">
-								<div class="modal-dialog modal-lg">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">&times;</button>
-											<h4 class="modal-title" id="myModalLabel">Please Choose
-												Your Location</h4>
-										</div>
-										<div class="modal-body">
-											<form class="form-horizontal" action="#" method="get">
-												<div class="form-group">
-													<select id="basic2" class="show-tick form-control" multiple>
-														<optgroup label="Popular Cities">
-															<option selected style="display: none; color: #eee;">Select
-																City</option>
-															<option>Birmingham</option>
-															<option>Anchorage</option>
-															<option>Phoenix</option>
-															<option>Little Rock</option>
-															<option>Los Angeles</option>
-															<option>Denver</option>
-															<option>Bridgeport</option>
-															<option>Wilmington</option>
-															<option>Jacksonville</option>
-															<option>Atlanta</option>
-															<option>Honolulu</option>
-															<option>Boise</option>
-															<option>Chicago</option>
-															<option>Indianapolis</option>
-														</optgroup>
-														<optgroup label="Alabama">
-															<option>Birmingham</option>
-															<option>Montgomery</option>
-															<option>Mobile</option>
-															<option>Huntsville</option>
-															<option>Tuscaloosa</option>
-														</optgroup>
 
-													</select>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</li>
 			</ul>
@@ -119,10 +65,8 @@
 				</h1>
 			</div>
 			<div class="agileits_search">
-				<form action="#" method="post">
-					<input name="Search" type="text"
-						placeholder="How can we help you today?" required="" /> <select
-						id="agileinfo_search" name="agileinfo_search" required="">
+				<form action="/Resale2/products.jsp" method="get">
+					<select id="agileinfo_search" name="category" clas="form-control" required="">
 						<option value="">All Categories</option>
 						<c:forEach var="category" items="${applicationScope.categories }">
 							<option value="${category}">${category}</option>

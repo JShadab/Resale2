@@ -34,7 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 
@@ -76,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<div class="container">
 
-				<table class="table table-bordered table-striped">
+			<table class="table table-bordered table-striped">
 
 				<tr>
 					<th>Category</th>
@@ -111,8 +113,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<td>${product.price }</td>
 						<td>${product.offer }</td>
-						
-						<td><a class="btn btn-warning" href="">Edit</a></td>
+
+						<td><a class="btn btn-warning"
+							href="/Resale2/product?method=Edit_Ad&id=${product.id }">Edit</a></td>
 						<td><a class="btn btn-danger" href="">Delete</a></td>
 					</tr>
 

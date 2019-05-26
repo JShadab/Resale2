@@ -25,11 +25,27 @@ import db.repo.ProductRepository;
 public class ProductServlet extends HttpServlet {
 
 	private static final String POST_AD = "Post_Ad";
+	private static final String EDIT_AD = "Edit_Ad";
+	private static final String SHOW_AD = "Edit_Ad";
 
 	private static final String uploadFilePath = "C:\\Users\\Shadab\\eclipse-workspace\\Resale2\\WebContent\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String method = req.getParameter("method");
+
+		if (EDIT_AD.equals(method)) {
+			long id = Long.parseLong(req.getParameter("id"));
+
+			Product product = ProductRepository.findProduct(id);
+
+			req.setAttribute("product", product);
+
+			req.getRequestDispatcher("/editPostAds.jsp").forward(req, resp);
+			
+			return;
+		}
 	}
 
 	@Override
@@ -39,6 +55,12 @@ public class ProductServlet extends HttpServlet {
 
 		if (POST_AD.equals(method)) {
 			postAd(req, resp);
+			return;
+		} else if (EDIT_AD.equals(method)) {
+			editAd(req, resp);
+			return;
+		} else if (SHOW_AD.equals(method)) {
+			req.getParameter("method");
 			return;
 		}
 	}
@@ -117,6 +139,81 @@ public class ProductServlet extends HttpServlet {
 			}
 		}
 
+	}
+
+	private void editAd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		HttpSession session = request.getSession(false);
+
+		if (session != null) {
+
+			// Create path components to save the file
+			String category = request.getParameter("category");
+			String title = request.getParameter("title");
+			String offerDesc = request.getParameter("offer");
+			float price = Float.parseFloat(request.getParameter("price"));
+			String description = request.getParameter("description");
+
+			User user = (User) session.getAttribute("User");
+
+			Product product = new Product();
+
+			product.setCategory(category);
+			product.setDescription(description);
+
+			final Part filePart1 = request.getPart("file1");
+			final Part filePart2 = request.getPart("file2");
+			final Part filePart3 = request.getPart("file3");
+			final Part filePart4 = request.getPart("file4");
+			final Part filePart5 = request.getPart("file5");
+
+			if (filePart1 != null) {
+				final String fileName1 = getFileName(filePart1);
+				filePart1.write(uploadFilePath + File.separator + fileName1);
+				product.setImage1(fileName1);
+			}
+
+			if (filePart2 != null) {
+				final String fileName2 = getFileName(filePart2);
+				filePart2.write(uploadFilePath + File.separator + fileName2);
+				product.setImage2(fileName2);
+			}
+
+			if (filePart3 != null) {
+				final String fileName3 = getFileName(filePart3);
+				filePart3.write(uploadFilePath + File.separator + fileName3);
+				product.setImage3(fileName3);
+			}
+
+			if (filePart4 != null) {
+				final String fileName4 = getFileName(filePart4);
+				filePart4.write(uploadFilePath + File.separator + fileName4);
+				product.setImage4(fileName4);
+			}
+
+			if (filePart5 != null) {
+				final String fileName5 = getFileName(filePart5);
+				filePart5.write(uploadFilePath + File.separator + fileName5);
+				product.setImage5(fileName5);
+			}
+
+			Offers offer = new Offers();
+			offer.setDescription(offerDesc);
+			product.setOffer(offer);
+
+			product.setPrice(price);
+			product.setTitle(title);
+			product.setUser(user);
+
+			boolean isSuccess = ProductRepository.createProduct(product);
+
+			if (isSuccess) {
+				session.setAttribute("products", ProductRepository.getAllProduct());
+				response.sendRedirect("/Resale2/allUserAds.jsp");
+			}
+		}
 	}
 
 	private String getFileName(final Part part) {
