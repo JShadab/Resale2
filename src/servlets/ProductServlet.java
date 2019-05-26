@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 import beans.Offers;
 import beans.Product;
 import beans.User;
+import db.repo.OffersRepository;
 import db.repo.ProductRepository;
 
 @WebServlet(value = "/product")
@@ -26,7 +27,8 @@ public class ProductServlet extends HttpServlet {
 
 	private static final String POST_AD = "Post_Ad";
 	private static final String EDIT_AD = "Edit_Ad";
-	private static final String SHOW_AD = "Edit_Ad";
+	private static final String SHOW_AD = "Show_Ad";
+	private static final String DELETE_AD = "DELETE_Ad";
 
 	private static final String uploadFilePath = "C:\\Users\\Shadab\\eclipse-workspace\\Resale2\\WebContent\\uploads";
 
@@ -43,8 +45,10 @@ public class ProductServlet extends HttpServlet {
 			req.setAttribute("product", product);
 
 			req.getRequestDispatcher("/editPostAds.jsp").forward(req, resp);
-			
+
 			return;
+			
+		} else if (DELETE_AD.equals(method)) {
 		}
 	}
 
@@ -147,6 +151,10 @@ public class ProductServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 
+		long id = Long.parseLong(request.getParameter("id"));
+
+		Product product = ProductRepository.findProduct(id);
+
 		if (session != null) {
 
 			// Create path components to save the file
@@ -157,8 +165,6 @@ public class ProductServlet extends HttpServlet {
 			String description = request.getParameter("description");
 
 			User user = (User) session.getAttribute("User");
-
-			Product product = new Product();
 
 			product.setCategory(category);
 			product.setDescription(description);
@@ -199,7 +205,7 @@ public class ProductServlet extends HttpServlet {
 				product.setImage5(fileName5);
 			}
 
-			Offers offer = new Offers();
+			Offers offer = product.getOffer();
 			offer.setDescription(offerDesc);
 			product.setOffer(offer);
 
@@ -207,7 +213,8 @@ public class ProductServlet extends HttpServlet {
 			product.setTitle(title);
 			product.setUser(user);
 
-			boolean isSuccess = ProductRepository.createProduct(product);
+			boolean isSuccess = ProductRepository.updateProduct(product);
+			OffersRepository.updateOffers(offer);
 
 			if (isSuccess) {
 				session.setAttribute("products", ProductRepository.getAllProduct());
