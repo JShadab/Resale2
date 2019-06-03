@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Offers;
+import beans.Offer;
 import beans.Product;
 import beans.User;
 import db.repo.ProductRepository;
@@ -125,7 +125,7 @@ public class UserServlet extends HttpServlet {
 			product.setDescription(description);
 			product.setImage1(image);
 			
-			Offers offer = new Offers();
+			Offer offer = new Offer();
 			offer.setDescription(offerDesc);
 			product.setOffer(offer);
 

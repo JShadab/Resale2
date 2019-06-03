@@ -1,14 +1,14 @@
 package beans;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
-public class Offers {
+public class Offer {
 
 	private Long id;
 
 	private String description;
 
-	private Date expiryDate=new Date(11111111);
+	private LocalDate expiryDate;
 
 	public Long getId() {
 		return id;
@@ -26,22 +26,12 @@ public class Offers {
 		this.description = description;
 	}
 
-	public Date getExpiryDate() {
+	public LocalDate getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
+	public void setExpiryDate(LocalDate expiryDate) {
 		this.expiryDate = expiryDate;
-	}
-
-	private Product product;
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
 	}
 
 	@Override

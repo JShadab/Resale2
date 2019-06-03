@@ -17,7 +17,7 @@ public class Product implements Serializable {
 	private String image4;
 	private String image5;
 	private User user;
-	private Offers offer;
+	private Offer offer;
 
 	private List<UploadFileResponse> images;
 
@@ -126,11 +126,11 @@ public class Product implements Serializable {
 		this.image5 = image5;
 	}
 
-	public Offers getOffer() {
+	public Offer getOffer() {
 		return offer;
 	}
 
-	public void setOffer(Offers offer) {
+	public void setOffer(Offer offer) {
 		this.offer = offer;
 	}
 

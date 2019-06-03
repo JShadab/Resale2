@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import beans.Offers;
+import beans.Offer;
 import beans.Product;
 import beans.User;
 import db.repo.OffersRepository;
@@ -30,7 +30,7 @@ public class ProductServlet extends HttpServlet {
 	private static final String SHOW_AD = "Show_Ad";
 	private static final String DELETE_AD = "DELETE_Ad";
 
-	private static final String uploadFilePath = "C:\\Users\\Shadab\\eclipse-workspace\\Resale2\\WebContent\\uploads";
+	private static final String uploadFilePath = "D:\\eclipse-workspace\\Resale2\\WebContent\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -127,7 +127,7 @@ public class ProductServlet extends HttpServlet {
 				product.setImage5(fileName5);
 			}
 
-			Offers offer = new Offers();
+			Offer offer = new Offer();
 			offer.setDescription(offerDesc);
 			product.setOffer(offer);
 
@@ -205,7 +205,7 @@ public class ProductServlet extends HttpServlet {
 				product.setImage5(fileName5);
 			}
 
-			Offers offer = product.getOffer();
+			Offer offer = product.getOffer();
 			offer.setDescription(offerDesc);
 			product.setOffer(offer);
 

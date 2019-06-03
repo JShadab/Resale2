@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Offers;
+import beans.Offer;
 import beans.Product;
 import beans.User;
 import db.DBConnection;
@@ -43,7 +43,7 @@ public class ProductRepository {
 
 				product.setPrice(rs.getFloat("price"));
 
-				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
 				product.setOffer(offer);
 
 				User user = UserRepository.findUser(rs.getLong("user_id"));
@@ -93,7 +93,7 @@ public class ProductRepository {
 
 				product.setPrice(rs.getFloat("price"));
 
-				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
 				product.setOffer(offer);
 
 				User user = UserRepository.findUser(rs.getLong("user_id"));
@@ -147,7 +147,7 @@ public class ProductRepository {
 				product.setTitle(rs.getString("title"));
 				product.setPrice(rs.getFloat("price"));
 
-				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
 				product.setOffer(offer);
 
 				User user = UserRepository.findUser(rs.getLong("user_id"));
@@ -200,7 +200,7 @@ public class ProductRepository {
 				product.setTitle(rs.getString("title"));
 				product.setPrice(rs.getFloat("price"));
 
-				Offers offer = OffersRepository.findOffers(rs.getLong("offer_id"));
+				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
 				product.setOffer(offer);
 
 				product.setUser(user);
