@@ -100,22 +100,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="agileinfo_signin">
 				<h3>Sign Up</h3>
 				<form action="/Resale2/user" method="post">
-					<input type="hidden" value="SignUp" name="method"> <input
-						type="text" name="Name" placeholder="Your Name" required="">
-					<input type="email" name="Email" placeholder="Your Email"
-						required=""> <input type="tel" placeholder="Mobile"
-						name="Mobile" required=""> <input type="password"
-						name="Password" placeholder="Password" required=""> <input
-						type="password" name="Password" placeholder="Confirm Password"
-						required=""> <select name="category" class="form-control">
+					<input type="hidden" value="SignUp" name="method"> 
+					<input type="text" name="Name" placeholder="Your Name" required="">
+					<input type="email" name="Email" placeholder="Your Email" required=""> 
+					<input type="tel" placeholder="Contact number" name="Mobile" required=""> 
+					<input type="password" name="Password" placeholder="Password" required=""> 
+					<input type="password" name="Password" placeholder="Confirm Password" required=""> 
+					<select name="category" class="form-control">
 						<option>Please Select</option>
 						<c:forEach var="category" items="${applicationScope.categories}">
 							<option>${category }</option>
 						</c:forEach>
 
-					</select><br> <input type="text" name="AddressLine1"
-						placeholder="Address Line1" required=""> <input
-						type="text" name="AddressLine2" placeholder="Address Line2">
+					</select>
+					<br> 
+					<input type="text" name="AddressLine1" placeholder="Address Line1" required=""> 
+					<input type="text" name="AddressLine2" placeholder="Address Line2">
 					<input type="text" name="City" placeholder="City" required="">
 					<input type="text" name="State" placeholder="State" required="">
 					<input type="text" name="PinCode" placeholder="Pincode" required="">

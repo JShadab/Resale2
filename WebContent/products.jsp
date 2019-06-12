@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<META HTTP-EQUIV="Refresh" CONTENT="60">
+
 <title>Resale | Products</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- bootstrap-CSS -->
@@ -23,13 +26,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-	
-	
-
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
+		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 
 </script>
 <!-- //meta tags -->
@@ -131,8 +128,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 </script>
 <!-- //switcher-grid and list alignment -->
+
+<script type="text/javascript">
+	function onPageLoad() {
+
+		var expiryDateVal = document.getElementById("expiryDate").innerHTML;
+
+		var expiryDate = new Date(expiryDateVal);
+		var nowDate = new Date();
+
+		var miliSec = expiryDate.getTime() - nowDate.getTime();
+
+		var seconds = miliSec / 1000;
+		var minutes = seconds / 60;
+		var hours = minutes / 60;
+		var days = hours / 24;
+
+		document.getElementById("remainingDays").innerHTML = ''
+				+ parseInt(minutes);
+
+	}
+</script>
 </head>
-<body>
+<body onload="onPageLoad()">
 
 	<!-- header Start-->
 	<jsp:include page="header.jsp" />
@@ -238,8 +256,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																<p class="catpath">${product.description}</p>
 															</section>
 															<section class="list-right">
-																<span class="date">${product.offer.expiryDate}</span> <span
-																	class="cityname">${product.user.city}</span>
+																<span class="date" id="expiryDate">${product.offer.expiryDate}</span>
+																<span class="cityname">${product.user.city}</span>
+															</section>
+															<section class="list-right list-bottom">
+																Do Hurry,
+																<h4 id="remainingDays"></h4>
+																<br> minutes are remaining.....
 															</section>
 															<div class="clearfix"></div></li>
 													</a>

@@ -25,7 +25,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 
@@ -54,7 +58,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 </script>
 <!-- //meta tags -->
@@ -185,6 +193,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<textarea class="mess"
 						placeholder="Write few lines about your product"
 						name="description"></textarea>
+					<div class="clearfix"></div>
+					<label>Offer Expiry Date </label> <input type="date" class="phone"
+						name="expiryDate">
+					<div class="clearfix"></div>
 					<div class="clearfix"></div>
 					<div class="upload-ad-photos">
 						<label>Photos for your ad :</label>

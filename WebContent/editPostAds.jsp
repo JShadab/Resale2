@@ -28,7 +28,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 
 
 
@@ -63,7 +69,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 
 
 
@@ -173,11 +185,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form action="/Resale2/product" method="post"
 					enctype="multipart/form-data">
 
-					<input type="hidden" name="method" value="Edit_Ad">
-					<input type="hidden" name="id" value="${requestScope.product.id }">
-					
-					 <label>Select
-						Category <span>*</span>
+					<input type="hidden" name="method" value="Edit_Ad"> <input
+						type="hidden" name="id" value="${requestScope.product.id }">
+
+					<label>Select Category <span>*</span>
 					</label> <select class="" name="category">
 						<c:forEach var="category" items="${categories }">
 
@@ -203,6 +214,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						value="${requestScope.product.offer.description }">
 					<div class="clearfix"></div>
 
+					<label>Offer Expiry Date </label> <input type="date" class="phone"
+						name="expiryDate"
+						value="${requestScope.product.offer.expiryDate }">
+					<div class="clearfix"></div>
+
 					<label>Price </label> <input type="text" class="phone"
 						placeholder="price" name="price"
 						value="${requestScope.product.price }">
@@ -219,26 +235,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							<div>
 								<img alt=""
-									src="/Resale2/uploads/${requestScope.product.image1 }" class="img-rounded"  height="200" width="200">
-								<input type="file" id="fileselect" name="file1" /><br> 
-								
-								<img alt=""
-									src="/Resale2/uploads/${requestScope.product.image2 }" class="img-rounded" height="200" width="200"><input
-									type="file" id="fileselect" name="file2" /><br>
-									
-									<img alt=""
-									src="/Resale2/uploads/${requestScope.product.image3 }" class="img-rounded" height="200" width="200"> <input
-									type="file" id="fileselect" name="file3" /><br>
-									
-									<img alt=""
-									src="/Resale2/uploads/${requestScope.product.image4 }" class="img-rounded" height="200" width="200"> <input
-									type="file" id="fileselect" name="file4" /><br>
-									
-									<img alt=""
-									src="/Resale2/uploads/${requestScope.product.image5 }" class="img-rounded" height="200" width="200"> <input
+									src="/Resale2/uploads/${requestScope.product.image1 }"
+									class="img-rounded" height="200" width="200"> <input
+									type="file" id="fileselect" name="file1" /><br> <img
+									alt="" src="/Resale2/uploads/${requestScope.product.image2 }"
+									class="img-rounded" height="200" width="200"><input
+									type="file" id="fileselect" name="file2" /><br> <img
+									alt="" src="/Resale2/uploads/${requestScope.product.image3 }"
+									class="img-rounded" height="200" width="200"> <input
+									type="file" id="fileselect" name="file3" /><br> <img
+									alt="" src="/Resale2/uploads/${requestScope.product.image4 }"
+									class="img-rounded" height="200" width="200"> <input
+									type="file" id="fileselect" name="file4" /><br> <img
+									alt="" src="/Resale2/uploads/${requestScope.product.image5 }"
+									class="img-rounded" height="200" width="200"> <input
 									type="file" id="fileselect" name="file5" /><br>
 
-								
+
 							</div>
 
 						</div>
@@ -251,7 +264,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</form>
 			</div>
 			<div class="clearfix"></div>
-			
+
 		</div>
 		<!-- 					<div class="personal-details">
 						<form>

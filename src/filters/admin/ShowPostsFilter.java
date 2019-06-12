@@ -17,14 +17,21 @@ public class ShowPostsFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		
+
 		String idStr = req.getParameter("id");
+		String userIdStr = req.getParameter("user_id");
+
 		if (idStr != null) {
 			long id = Long.parseLong(idStr);
 			ProductRepository.deleteProduct(id);
 		}
 
-		req.setAttribute("posts", ProductRepository.getAllProduct());
+		else if (userIdStr != null) {
+			long userId = Long.parseLong(userIdStr);
+			req.setAttribute("posts", ProductRepository.getAllProduct(userId));
+		} else {
+			req.setAttribute("posts", ProductRepository.getAllProduct());
+		}
 
 		chain.doFilter(req, resp);
 

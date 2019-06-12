@@ -2,19 +2,25 @@ package beans;
 
 import java.time.LocalDate;
 
+import db.repo.ProductRepository;
+
 public class Offer {
 
-	private Long id;
+	private long id;
 
 	private String description;
 
 	private LocalDate expiryDate;
 
-	public Long getId() {
+	private long productId;
+
+	private Product product;
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -34,9 +40,22 @@ public class Offer {
 		this.expiryDate = expiryDate;
 	}
 
+	public Product getProduct() {
+
+		return product = ProductRepository.findProduct(productId);
+	}
+
 	@Override
 	public String toString() {
 		return "Offers [id=" + id + ", description=" + description + ", expiryDate=" + expiryDate + "]";
+	}
+
+	public long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(long productId) {
+		this.productId = productId;
 	}
 
 }

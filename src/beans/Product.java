@@ -1,7 +1,9 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.List;
+
+import db.repo.OfferRepository;
+import db.repo.UserRepository;
 
 public class Product implements Serializable {
 
@@ -16,20 +18,11 @@ public class Product implements Serializable {
 	private String image3;
 	private String image4;
 	private String image5;
-	private User user;
+	private long userId;
+
 	private Offer offer;
 
-	private List<UploadFileResponse> images;
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -46,20 +39,11 @@ public class Product implements Serializable {
 	}
 
 	public Long getUserId() {
-		return user.getId();
+		return userId;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", category=" + category + "]";
-	}
-
-	public List<UploadFileResponse> getImages() {
-		return images;
-	}
-
-	public void setImages(List<UploadFileResponse> images) {
-		this.images = images;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getDescription() {
@@ -126,12 +110,24 @@ public class Product implements Serializable {
 		this.image5 = image5;
 	}
 
-	public Offer getOffer() {
-		return offer;
+	public User getUser() {
+		return UserRepository.findUser(this.userId);
 	}
 
-	public void setOffer(Offer offer) {
-		this.offer = offer;
+	public String[] getImages() {
+		return new String[] { image1, image2, image3, image4, image5 };
+	}
+
+	public Offer getOffer() {
+
+		return this.offer = OfferRepository.findOfferByProductId(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", category=" + category + ", description=" + description + ", price=" + price
+				+ ", title=" + title + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", image4="
+				+ image4 + ", image5=" + image5 + ", userId=" + userId + "]";
 	}
 
 }

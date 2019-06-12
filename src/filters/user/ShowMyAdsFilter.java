@@ -32,9 +32,12 @@ public class ShowMyAdsFilter implements Filter {
 
 			User user = (User) session.getAttribute("User");
 
-			List<Product> userProducts = ProductRepository.getAllProduct(user);
+			if (user != null) {
 
-			req.setAttribute("userProducts", userProducts);
+				List<Product> userProducts = ProductRepository.getAllProduct(user.getId());
+
+				req.setAttribute("userProducts", userProducts);
+			}
 
 			chain.doFilter(req, resp);
 

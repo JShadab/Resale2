@@ -95,9 +95,9 @@ th {
 						<td>${product.title }</td>
 						<td>${product.category }</td>
 						<td>${product.price }</td>
-						<td><img src="/Resale2/uploads/${product.image}"
+						<td><img src="/Resale2/uploads/${product.image1}"
 							class="img-thumbnail" height="100" width="100" /></td>
-						<td>${product.user }</td>
+						<td>${product.user.email }</td>
 						<td>${product.description }</td>
 						<td><a href="/Resale2/admin/editAds.jsp?id=${product.id}"
 							class="btn btn-info">Edit</a></td>

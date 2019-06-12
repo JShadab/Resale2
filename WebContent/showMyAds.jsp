@@ -112,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							height="100" width="100" alt="${product.image5 }" /></td>
 
 						<td>${product.price }</td>
-						<td>${product.offer }</td>
+						<td>${product.offer.description }</td>
 
 						<td><a class="btn btn-warning"
 							href="/Resale2/product?method=Edit_Ad&id=${product.id }">Edit</a></td>

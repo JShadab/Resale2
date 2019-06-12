@@ -88,6 +88,7 @@ th {
 					<th>PinCode</th>
 					<th>Edit</th>
 					<th>Delete</th>
+					<th>Show Ads</th>
 
 				</tr>
 
@@ -105,6 +106,8 @@ th {
 							class="btn btn-info">Edit</a></td>
 						<td><a href="/Resale2/admin/showUsers.jsp?id=${user.id }"
 							class="btn btn-danger">Delete</a></td>
+							<td><a href="/Resale2/admin/showAds.jsp?user_id=${user.id }"
+							class="btn btn-warning">Ads</a></td>
 					</tr>
 				</c:forEach>
 

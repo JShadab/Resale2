@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Offer;
 import beans.Product;
 import beans.User;
 import db.DBConnection;
@@ -43,11 +43,7 @@ public class ProductRepository {
 
 				product.setPrice(rs.getFloat("price"));
 
-				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
-				product.setOffer(offer);
-
-				User user = UserRepository.findUser(rs.getLong("user_id"));
-				product.setUser(user);
+				product.setUserId(rs.getLong("user_id"));
 
 			}
 
@@ -93,11 +89,7 @@ public class ProductRepository {
 
 				product.setPrice(rs.getFloat("price"));
 
-				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
-				product.setOffer(offer);
-
-				User user = UserRepository.findUser(rs.getLong("user_id"));
-				product.setUser(user);
+				product.setUserId(rs.getLong("user_id"));
 
 				products.add(product);
 
@@ -147,11 +139,7 @@ public class ProductRepository {
 				product.setTitle(rs.getString("title"));
 				product.setPrice(rs.getFloat("price"));
 
-				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
-				product.setOffer(offer);
-
-				User user = UserRepository.findUser(rs.getLong("user_id"));
-				product.setUser(user);
+				product.setUserId(rs.getLong("user_id"));
 
 				products.add(product);
 
@@ -169,7 +157,7 @@ public class ProductRepository {
 		return products;
 	}
 
-	public static List<Product> getAllProduct(User user) {
+	public static List<Product> getAllProduct(long userId) {
 
 		String select = "SELECT * FROM products WHERE user_id=?";
 
@@ -179,7 +167,7 @@ public class ProductRepository {
 
 			PreparedStatement ps = connection.prepareStatement(select);
 
-			ps.setLong(1, user.getId());
+			ps.setLong(1, userId);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -200,10 +188,7 @@ public class ProductRepository {
 				product.setTitle(rs.getString("title"));
 				product.setPrice(rs.getFloat("price"));
 
-				Offer offer = OffersRepository.findOffers(rs.getLong("offer_id"));
-				product.setOffer(offer);
-
-				product.setUser(user);
+				product.setUserId(rs.getLong("user_id"));
 
 				products.add(product);
 
@@ -221,15 +206,15 @@ public class ProductRepository {
 		return products;
 	}
 
-	public static boolean createProduct(Product product) {
+	public static long createProduct(Product product) {
 
-		boolean isSucces = false;
+		long id = -1;
 
-		String insert = "INSERT INTO products (category, title, description, image1, image2, image3, image4, image5, price, offer_id, user_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+		String insert = "INSERT INTO products (category, title, description, image1, image2, image3, image4, image5, price, user_id) values (?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = DBConnection.getConnection();) {
 
-			PreparedStatement ps = connection.prepareStatement(insert);
+			PreparedStatement ps = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, product.getCategory());
 			ps.setString(2, product.getTitle());
@@ -242,12 +227,17 @@ public class ProductRepository {
 			ps.setString(8, product.getImage5());
 
 			ps.setFloat(9, product.getPrice());
-			ps.setLong(10, product.getOffer().getId());
-			ps.setLong(11, product.getUser().getId());
+
+			ps.setLong(10, product.getUser().getId());
 
 			ps.executeUpdate();
 
-			isSucces = true;
+			ResultSet rs = ps.getGeneratedKeys();
+
+			if (rs.next()) {
+
+				id = rs.getLong(1);
+			}
 
 			ps.close();
 
@@ -255,7 +245,7 @@ public class ProductRepository {
 
 			e.printStackTrace();
 		}
-		return isSucces;
+		return id;
 
 	}
 
@@ -263,11 +253,10 @@ public class ProductRepository {
 
 		boolean isSucces = false;
 
-		String insert = "UPDATE products SET category=?, title=?, description=?, image1=?, image2=?, image3=?, image4=?, image5=?, price=?, offer_id=?, user_id=? WHERE id=?";
+		String insert = "UPDATE products SET category=?, title=?, description=?, image1=?, image2=?, image3=?, image4=?, image5=?, price=?, user_id=? WHERE id=?";
 
 		try (Connection connection = DBConnection.getConnection();) {
-			
-			
+
 			PreparedStatement ps = connection.prepareStatement(insert);
 
 			ps.setString(1, product.getCategory());
@@ -281,10 +270,9 @@ public class ProductRepository {
 			ps.setString(8, product.getImage5());
 
 			ps.setFloat(9, product.getPrice());
-			ps.setLong(10, product.getOffer().getId());
-			ps.setLong(11, product.getUser().getId());
+			ps.setLong(10, product.getUser().getId());
 
-			ps.setLong(12, product.getId());
+			ps.setLong(11, product.getId());
 
 			ps.executeUpdate();
 

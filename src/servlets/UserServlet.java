@@ -124,18 +124,19 @@ public class UserServlet extends HttpServlet {
 			product.setCategory(category);
 			product.setDescription(description);
 			product.setImage1(image);
-			
-			Offer offer = new Offer();
-			offer.setDescription(offerDesc);
-			product.setOffer(offer);
 
 			// product.setPrice(price);
 			product.setTitle(title);
-			product.setUser(user);
+			product.setUserId(user.getId());
 
-			boolean isSuccess = ProductRepository.createProduct(product);
+			long productId = ProductRepository.createProduct(product);
 
-			if (isSuccess) {
+			if (productId != -1) {
+
+				Offer offer = new Offer();
+				offer.setProductId(productId);
+				offer.setDescription(offerDesc);
+
 				session.setAttribute("products", ProductRepository.getAllProduct());
 				resp.sendRedirect("/Resale2/allUserAds.jsp");
 			}
